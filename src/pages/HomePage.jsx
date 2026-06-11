@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { 
-  Plane, 
-  Waves, 
-  Mountain, 
-  ArrowRight, 
-  Zap, 
-  Shield, 
+import {
+  Plane,
+  Waves,
+  Sprout,
+  ArrowRight,
+  Zap,
+  Shield,
   Target,
-  Cpu,
   Radio,
-  Camera
+  Lightbulb,
+  Users
 } from 'lucide-react'
 
 const HomePage = () => {
@@ -19,19 +19,19 @@ const HomePage = () => {
     {
       id: 'drone',
       name: 'Diganta Prohori',
-      subtitle: 'Surveillance Drone',
-      description: 'High-end surveillance drone with hexacopter carbon-fiber frame, Pixhawk 6C controller, and PX4 flight software. Equipped with high-resolution camera, optical sensors, and emergency supply delivery system.',
+      subtitle: 'Multipurpose Drone',
+      description: 'High-end multipurpose drone with hexacopter carbon-fiber frame, Pixhawk 6C controller, and PX4 flight software. Equipped with high-resolution camera, optical sensors, and emergency supply delivery system for diverse mission profiles.',
       icon: Plane,
       path: '/drone',
       gradient: 'from-cyan-400 to-blue-600',
       bgGradient: 'bg-gradient-drone',
-      features: ['ZD850 Carbon Fiber', 'Pixhawk 6C Controller', '3D Mapping', 'Emergency Delivery']
+      features: ['ZD850 Carbon Fiber Frame', 'Pixhawk 6C Controller', '3D Aerial Mapping', 'Multi-Mission Capable']
     },
     {
       id: 'auv',
-      name: 'HydroJan 0.4',
+      name: 'JolJan 1.0',
       subtitle: 'Autonomous Underwater Vehicle',
-      description: 'Advanced AUV with capsule-shaped hull for hydrodynamic stability, high-performance Rovmaker thrusters, and mild steel frame designed for post-flood hazard detection.',
+      description: 'Advanced AUV with capsule-shaped hull for hydrodynamic stability, high-performance Rovmaker thrusters, and mild steel frame designed for post-flood hazard detection and underwater exploration.',
       icon: Waves,
       path: '/auv',
       gradient: 'from-purple-400 to-indigo-600',
@@ -40,14 +40,14 @@ const HomePage = () => {
     },
     {
       id: 'rov',
-      name: 'Dingi',
-      subtitle: 'Water-Floating Rescue Robot',
-      description: 'Water-floating rescue robot designed to assist people in immediate danger during floods, with advanced navigation and rescue capabilities.',
-      icon: Mountain,
+      name: 'Farming Control',
+      subtitle: 'Smart Agricultural Control System',
+      description: 'Intelligent farming control robot designed to monitor and manage agricultural activities, crop conditions, soil health, and field operations with precision automation and real-time remote control.',
+      icon: Sprout,
       path: '/rov',
-      gradient: 'from-pink-400 to-red-600',
-      bgGradient: 'bg-gradient-rov',
-      features: ['Water Floating', 'Rescue Operations', 'Emergency Response', 'Flood Navigation']
+      gradient: 'from-green-400 to-emerald-600',
+      bgGradient: 'bg-gradient-to-br from-green-500 to-emerald-700',
+      features: ['Crop Monitoring', 'Remote Field Control', 'Soil Analysis', 'Precision Agriculture']
     }
   ]
 
@@ -89,15 +89,39 @@ const HomePage = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-8"
           >
-            <h1 className="text-6xl md:text-8xl font-cyber font-black mb-6 glow-text">
+            {/* Logo + Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center mb-8"
+            >
+              <div className="relative">
+                <div className="w-28 h-28 rounded-full border-4 border-cyber-blue/60 overflow-hidden energy-pulse shadow-2xl shadow-cyber-blue/30">
+                  <img
+                    src="/images/logo.jpeg"
+                    alt="Dreamers Innovator"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-cyber-blue text-dark-bg text-xs font-cyber font-bold px-3 py-0.5 rounded-full whitespace-nowrap">
+                  ATBKHS
+                </div>
+              </div>
+            </motion.div>
+
+            <h1 className="text-5xl md:text-7xl font-cyber font-black mb-4 glow-text">
               <span className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink bg-clip-text text-transparent">
-                PHANTOM
+                DREAMERS
               </span>
               <br />
-              <span className="text-white">FORGE</span>
+              <span className="text-white">INNOVATOR</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 font-display max-w-4xl mx-auto leading-relaxed">
-              Team Phantom Forge, representing Dreams Of Bangladesh, designs next-generation flood management robotic vehicles to support human rescue and water resources management for the 7th World Invention Competition and Exhibition.
+            <p className="text-sm md:text-base text-cyber-blue font-display tracking-widest mb-6 font-semibold">
+              A Initiative of Ashuganj Tap Bidyut Kendra High School
+            </p>
+            <p className="text-lg md:text-xl text-gray-300 font-display max-w-4xl mx-auto leading-relaxed">
+              Team Dreamers Innovator, representing Dreams Of Bangladesh, designs next-generation robotic vehicles for flood management, underwater exploration, and smart agricultural control — competing at the 7th World Invention Competition and Exhibition.
             </p>
           </motion.div>
 
@@ -137,15 +161,15 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto">
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-6 glow-text text-cyber-blue">
-              SMART FLOOD MANAGEMENT SYSTEM
+              INNOVATION SYSTEM
             </h2>
             <p className="text-lg text-gray-300 font-display max-w-3xl mx-auto">
-              Our three-part flood response system designed to save lives, improve rescue efforts, and reduce the long-term impact of floods on communities in Bangladesh.
+              Our three-part innovation system — a multipurpose drone, autonomous underwater vehicle, and smart farming controller — designed to solve real-world challenges in Bangladesh and beyond.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {robots.map((robot, index) => (
+            {robots.map((robot) => (
               <motion.div
                 key={robot.id}
                 variants={itemVariants}
@@ -154,11 +178,11 @@ const HomePage = () => {
               >
                 <div className={`h-48 ${robot.bgGradient} relative overflow-hidden`}>
                   <motion.div
-                    animate={{ 
+                    animate={{
                       y: [0, -10, 0],
                       rotate: [0, 5, -5, 0]
                     }}
-                    transition={{ 
+                    transition={{
                       duration: 4,
                       repeat: Infinity,
                       ease: 'easeInOut'
@@ -196,14 +220,11 @@ const HomePage = () => {
                     ))}
                   </div>
 
-                  <Link
-                    to={robot.path}
-                    className="block w-full"
-                  >
+                  <Link to={robot.path} className="block w-full">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`w-full ${robot.bgGradient} text-white font-display font-semibold py-3 px-6 rounded-lg flex items-center justify-center space-x-2 transition-all group-hover:shadow-lg group-hover:shadow-current/25`}
+                      className={`w-full ${robot.bgGradient} text-white font-display font-semibold py-3 px-6 rounded-lg flex items-center justify-center space-x-2 transition-all group-hover:shadow-lg`}
                     >
                       <span>Access Dashboard</span>
                       <ArrowRight className="w-4 h-4" />
@@ -240,10 +261,10 @@ const HomePage = () => {
                 OUR MISSION
               </h3>
               <p className="text-gray-300 font-display leading-relaxed mb-6">
-                Team Phantom Forge, representing Dreams Of Bangladesh, designs next-generation flood management robotic vehicles to support human rescue and water resources management. As participants in the 7th World Invention Competition and Exhibition, we are committed to advancing flood defense and hazard management.
+                Team Dreamers Innovator, representing Dreams Of Bangladesh and ATBKHS, designs next-generation robotic systems for flood management, underwater exploration, and smart agriculture. As participants in the 7th World Invention Competition and Exhibition, we are committed to advancing technology that solves real-world challenges.
               </p>
               <p className="text-gray-300 font-display leading-relaxed">
-                Beyond the competition, we are passionate about giving back to our community. In Bangladesh, we run STEM programs and door-to-door robotics workshops to spark curiosity and confidence among young souls.
+                Beyond competition, we run STEM programs and door-to-door robotics workshops to spark curiosity and confidence among the young innovators of tomorrow.
               </p>
             </motion.div>
 
@@ -255,10 +276,10 @@ const HomePage = () => {
                 OUR VISION
               </h3>
               <p className="text-gray-300 font-display leading-relaxed mb-6">
-                At Phantom Forge, we are more than just a team, we are a group of people who dare to make a difference. By combining creativity, determination, and teamwork, we strive to build technologies that not only save lives but also help communities stand stronger against floods and the challenges of climate change.
+                At Dreamers Innovator, we are more than just a team — we are a group of young people who dare to make a difference. By combining creativity, determination, and teamwork, we build technologies that save lives, empower farmers, and help communities stand stronger.
               </p>
               <p className="text-gray-300 font-display leading-relaxed">
-                Our goal is simple: <span className="text-cyber-blue font-semibold">"To encourage the next generation to dream big and believe in their power to create change."</span>
+                Our goal is clear: <span className="text-cyber-blue font-semibold">"To encourage the next generation to dream big and believe in their power to create change."</span>
               </p>
             </motion.div>
           </div>
@@ -279,8 +300,7 @@ const HomePage = () => {
               PROJECT IMPACT
             </h2>
             <p className="text-lg text-gray-300 font-display max-w-4xl mx-auto leading-relaxed">
-              Bangladesh faces severe challenges every monsoon, with floods being one of the most devastating natural disasters. 
-              Between 1971 and 2014, 78 major floods claimed over 41,700 lives and caused economic losses of $12.2 billion.
+              Bangladesh faces severe challenges every monsoon with devastating floods, while also needing smarter agricultural solutions. Our innovations address both — from aerial surveillance to underwater hazard detection and precision farming.
             </p>
           </motion.div>
 
@@ -288,18 +308,18 @@ const HomePage = () => {
             {[
               {
                 icon: Target,
-                title: 'Real-time Monitoring',
-                description: 'Diganta Prohori provides aerial surveillance and 3D mapping of flood-affected areas for immediate assessment and response coordination.'
+                title: 'Aerial Surveillance',
+                description: 'Diganta Prohori provides multipurpose aerial coverage — from 3D flood mapping to agricultural field surveys and emergency supply delivery.'
               },
               {
                 icon: Shield,
-                title: 'Emergency Rescue',
-                description: 'Dingi assists people in immediate danger during floods with advanced navigation and rescue capabilities in water-logged areas.'
+                title: 'Underwater Exploration',
+                description: 'JolJan 1.0 detects underwater hazards and structural damage post-flood, ensuring safe recovery and rebuilding efforts in affected communities.'
               },
               {
-                icon: Radio,
-                title: 'Post-Flood Assessment',
-                description: 'HydroJan 0.4 detects underwater hazards and structural damage to ensure safe recovery and rebuilding efforts.'
+                icon: Sprout,
+                title: 'Smart Farming',
+                description: 'Farming Control brings precision agriculture to Bangladesh — monitoring crop health, soil conditions, and field operations remotely in real time.'
               }
             ].map((impact, index) => (
               <motion.div
@@ -340,7 +360,7 @@ const HomePage = () => {
               PROJECT SHOWCASE
             </h2>
             <p className="text-lg text-gray-300 font-display max-w-3xl mx-auto leading-relaxed">
-              Witness our journey from concept to reality through lab sessions, testing phases, and breakthrough moments.
+              Witness our journey from concept to reality — lab sessions, testing phases, and breakthrough moments from Team Dreamers Innovator.
             </p>
           </motion.div>
 
@@ -351,7 +371,7 @@ const HomePage = () => {
               className="lg:col-span-2 glass-card rounded-xl overflow-hidden border border-cyan-500/30 group"
             >
               <div className="relative aspect-video bg-gray-900/50 overflow-hidden">
-                <video 
+                <video
                   className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   poster="/images/img-1.jpeg"
                   controls
@@ -369,12 +389,12 @@ const HomePage = () => {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-cyber font-bold text-white mb-2">
-                  Drone Development Lab Session
+                  Multipurpose Drone — Lab Session
                 </h3>
                 <p className="text-gray-400 font-display mb-4">
-                  Behind-the-scenes look at our team assembling and calibrating the Diganta Prohori surveillance drone in our robotics lab.
+                  Behind-the-scenes look at our team assembling and calibrating Diganta Prohori in our robotics lab at ATBKHS.
                 </p>
-                <Link 
+                <Link
                   to="/gallery"
                   className="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 font-display font-medium transition-colors"
                 >
@@ -388,29 +408,29 @@ const HomePage = () => {
             <motion.div variants={itemVariants} className="space-y-8">
               <div className="glass-card rounded-xl overflow-hidden border border-purple-500/30 group">
                 <div className="relative aspect-square bg-gray-900/50 overflow-hidden">
-                  <img 
-                    src="/images/img-6.jpeg" 
+                  <img
+                    src="/images/img-6.jpeg"
                     alt="Diganta Prohori Drone"
                     className="w-full h-full object-cover transition-transform group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                   <div className="absolute bottom-4 left-4">
                     <div className="text-white font-cyber font-bold text-lg">Diganta Prohori</div>
-                    <div className="text-gray-300 font-display text-sm">Surveillance Drone</div>
+                    <div className="text-gray-300 font-display text-sm">Multipurpose Drone</div>
                   </div>
                 </div>
               </div>
 
               <div className="glass-card rounded-xl overflow-hidden border border-indigo-500/30 group">
                 <div className="relative aspect-square bg-gray-900/50 overflow-hidden">
-                  <img 
-                    src="/images/img-7.jpeg" 
-                    alt="HydroJan 0.4 AUV"
+                  <img
+                    src="/images/img-7.jpeg"
+                    alt="JolJan 1.0 AUV"
                     className="w-full h-full object-cover transition-transform group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                   <div className="absolute bottom-4 left-4">
-                    <div className="text-white font-cyber font-bold text-lg">HydroJan 0.4</div>
+                    <div className="text-white font-cyber font-bold text-lg">JolJan 1.0</div>
                     <div className="text-gray-300 font-display text-sm">Underwater Vehicle</div>
                   </div>
                 </div>

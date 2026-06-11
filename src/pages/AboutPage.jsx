@@ -109,10 +109,10 @@ const AboutPage = () => {
                 ABOUT
               </span>
               <br />
-              <span className="text-white">PHANTOM FORGE</span>
+              <span className="text-white">DREAMERS INNOVATOR</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 font-display max-w-4xl mx-auto leading-relaxed">
-              We are more than just a team - we are a group of people who dare to make a difference through innovative robotics technology.
+              We are more than just a team — we are young innovators from ATBKHS who dare to make a difference through robotics technology and creative problem-solving.
             </p>
           </motion.div>
         </motion.section>
@@ -166,7 +166,7 @@ const AboutPage = () => {
                 OUR SOLUTION
               </h3>
               <p className="text-gray-300 font-display leading-relaxed mb-6">
-                Team Phantom Forge developed a comprehensive three-part Smart Flood Management System: Diganta Prohori for aerial surveillance, HydroJan 0.4 for underwater hazard detection, and Dingi for water-based rescue operations.
+                Team Dreamers Innovator developed a comprehensive three-part innovation system: Diganta Prohori for multipurpose aerial operations, JolJan 1.0 for underwater hazard detection, and Farming Control for smart agricultural management.
               </p>
               <p className="text-gray-300 font-display leading-relaxed mb-6">
                 Together, these systems aim to save lives, improve rescue efforts, and reduce the long-term impact of floods on communities.
@@ -294,20 +294,20 @@ const AboutPage = () => {
               DREAMS OF BANGLADESH
             </h2>
             <p className="text-lg text-gray-300 font-display leading-relaxed max-w-4xl mx-auto mb-8">
-              Team Phantom Forge represents Dreams of Bangladesh, an organization dedicated to advancing technology and education in our nation. We believe in the power of innovation to solve real-world problems and inspire the next generation.
+              Team Dreamers Innovator represents Dreams of Bangladesh and ATBKHS — Ashuganj Tap Bidyut Kendra High School — an organization dedicated to advancing technology and education. We believe in the power of innovation to solve real-world problems and inspire the next generation.
             </p>
             
             {/* Team Photo */}
             <div className="relative rounded-xl overflow-hidden mb-8 max-w-2xl mx-auto">
               <img 
                 src="/images/img-1.jpeg" 
-                alt="Team Phantom Forge - Dreams of Bangladesh"
+                alt="Team Dreamers Innovator - ATBKHS Dreams of Bangladesh"
                 className="w-full h-64 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-white font-cyber font-bold text-lg">Team Phantom Forge</div>
-                <div className="text-gray-300 font-display text-sm">Innovating for Bangladesh's Future</div>
+                <div className="text-white font-cyber font-bold text-lg">Team Dreamers Innovator</div>
+                <div className="text-gray-300 font-display text-sm">ATBKHS — Innovating for Bangladesh's Future</div>
               </div>
             </div>
             

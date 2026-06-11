@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -9,9 +9,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Drone', path: '/drone' },
-    { name: 'AUV', path: '/auv' },
-    { name: 'ROV', path: '/rov' },
+    { name: 'Multipurpose Drone', path: '/drone' },
+    { name: 'JolJan 1.0', path: '/auv' },
+    { name: 'Farming Control', path: '/rov' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
     { name: 'Blog', path: '/blog' },
@@ -27,21 +27,30 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
             <motion.div
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.6 }}
-              className="p-2 bg-gradient-cyber rounded-lg energy-pulse"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="w-10 h-10 rounded-full overflow-hidden border-2 border-cyber-blue/50 energy-pulse flex-shrink-0"
             >
-              <Zap className="w-6 h-6 text-white" />
+              <img
+                src="/images/logo.jpeg"
+                alt="Dreamers Innovator Logo"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
-            <span className="font-cyber text-xl font-bold glow-text text-cyber-blue">
-              PHANTOM FORGE
-            </span>
+            <div className="flex flex-col leading-none">
+              <span className="font-cyber text-sm font-bold glow-text text-cyber-blue tracking-widest">
+                DREAMERS INNOVATOR
+              </span>
+              <span className="text-gray-400 text-xs font-display tracking-wider">
+                ATBKHS Initiative
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -49,7 +58,7 @@ const Navbar = () => {
                 className="relative group"
               >
                 <motion.span
-                  className={`font-display font-medium transition-colors duration-300 ${
+                  className={`font-display text-sm font-medium transition-colors duration-300 ${
                     location.pathname === item.path
                       ? 'text-cyber-blue glow-text'
                       : 'text-gray-300 hover:text-cyber-blue'

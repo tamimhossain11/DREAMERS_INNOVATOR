@@ -88,7 +88,7 @@ const DroneDashboard = () => {
                 <h1 className="text-3xl font-cyber font-bold text-white glow-text">
                   DIGANTA PROHORI
                 </h1>
-                <p className="text-gray-400 font-display">Surveillance Drone Control Center</p>
+                <p className="text-gray-400 font-display">Multipurpose Drone Control Center</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">

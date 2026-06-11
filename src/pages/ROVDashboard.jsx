@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Mountain, 
-  Battery, 
-  Wifi, 
-  Navigation, 
-  Camera, 
+import {
+  Sprout,
+  Battery,
+  Wifi,
+  Navigation,
+  Camera,
   Gauge,
   MapPin,
   Thermometer,
   Activity,
-  Wrench,
+  Droplets,
   Play,
   Pause,
   ArrowUp,
@@ -19,31 +19,33 @@ import {
   ArrowRight,
   RotateCcw,
   Zap,
-  Cog,
+  Wind,
   Target,
-  Grip,
-  Eye,
-  Settings
+  Sun,
+  Settings,
+  FlaskConical
 } from 'lucide-react'
 
 const ROVDashboard = () => {
   const [isActive, setIsActive] = useState(false)
   const [speed, setSpeed] = useState(0)
-  const [battery, setBattery] = useState(89)
-  const [motorTemp, setMotorTemp] = useState(45)
-  const [tiltAngle, setTiltAngle] = useState(0)
-  const [armPosition, setArmPosition] = useState({ x: 50, y: 50, z: 50 })
-  const [gripperOpen, setGripperOpen] = useState(false)
-  const [cameraMode, setCameraMode] = useState('normal')
+  const [battery, setBattery] = useState(91)
+  const [soilMoisture, setSoilMoisture] = useState(62)
+  const [temperature, setTemperature] = useState(28)
+  const [humidity, setHumidity] = useState(74)
+  const [cameraMode, setCameraMode] = useState('rgb')
+  const [fieldCoverage, setFieldCoverage] = useState(34)
+  const [spraying, setSpraying] = useState(false)
 
-  // Simulate real-time data updates
   useEffect(() => {
     const interval = setInterval(() => {
       if (isActive) {
-        setSpeed(prev => Math.max(0, prev + (Math.random() - 0.5) * 3))
-        setBattery(prev => Math.max(0, prev - 0.12))
-        setMotorTemp(prev => Math.max(20, prev + (Math.random() - 0.5) * 2))
-        setTiltAngle(prev => prev + (Math.random() - 0.5) * 1)
+        setSpeed(prev => Math.max(0, prev + (Math.random() - 0.5) * 1.5))
+        setBattery(prev => Math.max(0, prev - 0.08))
+        setSoilMoisture(prev => Math.max(20, Math.min(95, prev + (Math.random() - 0.5) * 1)))
+        setTemperature(prev => Math.max(20, prev + (Math.random() - 0.5) * 0.4))
+        setHumidity(prev => Math.max(40, Math.min(95, prev + (Math.random() - 0.5) * 0.8)))
+        setFieldCoverage(prev => Math.min(100, prev + 0.2))
       }
     }, 1000)
 
@@ -51,19 +53,19 @@ const ROVDashboard = () => {
   }, [isActive])
 
   const telemetryData = [
-    { label: 'Speed', value: `${speed.toFixed(1)} km/h`, icon: Zap, color: 'text-pink-400' },
-    { label: 'Motor Temp', value: `${motorTemp.toFixed(1)}°C`, icon: Thermometer, color: 'text-orange-400' },
-    { label: 'Tilt Angle', value: `${tiltAngle.toFixed(1)}°`, icon: Activity, color: 'text-blue-400' },
-    { label: 'Grip Force', value: `${gripperOpen ? '15' : '0'} N`, icon: Grip, color: 'text-green-400' }
+    { label: 'Speed', value: `${speed.toFixed(1)} km/h`, icon: Zap, color: 'text-green-400' },
+    { label: 'Soil Moisture', value: `${soilMoisture.toFixed(0)}%`, icon: Droplets, color: 'text-blue-400' },
+    { label: 'Temperature', value: `${temperature.toFixed(1)}°C`, icon: Thermometer, color: 'text-orange-400' },
+    { label: 'Humidity', value: `${humidity.toFixed(0)}%`, icon: Wind, color: 'text-cyan-400' }
   ]
 
-  const operationModes = ['Manual Control', 'Rescue Mode', 'Flood Navigation', 'Emergency Response', 'Patrol Mode']
-  const [currentMode, setCurrentMode] = useState('Rescue Mode')
+  const operationModes = ['Manual Control', 'Field Survey', 'Crop Monitoring', 'Irrigation Mode', 'Harvest Assist']
+  const [currentMode, setCurrentMode] = useState('Field Survey')
 
-  const manipulatorControls = [
-    { name: 'Shoulder', value: armPosition.x, color: 'bg-pink-500' },
-    { name: 'Elbow', value: armPosition.y, color: 'bg-purple-500' },
-    { name: 'Wrist', value: armPosition.z, color: 'bg-indigo-500' }
+  const cropConditions = [
+    { name: 'Crop Health', value: 82, color: 'bg-green-500', status: 'Good' },
+    { name: 'Soil pH', value: 68, color: 'bg-yellow-500', status: '6.8 pH' },
+    { name: 'Nutrient Level', value: 55, color: 'bg-blue-500', status: 'Moderate' }
   ]
 
   return (
@@ -77,23 +79,23 @@ const ROVDashboard = () => {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-rov rounded-xl">
-                <Mountain className="w-8 h-8 text-white" />
+              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-700 rounded-xl">
+                <Sprout className="w-8 h-8 text-white" />
               </div>
               <div>
                 <h1 className="text-3xl font-cyber font-bold text-white glow-text">
-                  DINGI
+                  FARMING CONTROL
                 </h1>
-                <p className="text-gray-400 font-display">Water-Floating Rescue Robot Control Center</p>
+                <p className="text-gray-400 font-display">Smart Agricultural Control System Dashboard</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className={`flex items-center space-x-2 px-4 py-2 rounded-lg ${
-                isActive ? 'bg-pink-500/20 text-pink-400' : 'bg-gray-500/20 text-gray-400'
+                isActive ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'
               }`}>
-                <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-pink-400 status-pulse' : 'bg-gray-400'}`}></div>
+                <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-400 status-pulse' : 'bg-gray-400'}`}></div>
                 <span className="font-display font-medium">
-                  {isActive ? 'ACTIVE' : 'STANDBY'}
+                  {isActive ? 'OPERATING' : 'STANDBY'}
                 </span>
               </div>
             </div>
@@ -108,21 +110,21 @@ const ROVDashboard = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-6 flex items-center">
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-6 flex items-center">
                 <Navigation className="w-5 h-5 mr-2" />
-                MOVEMENT CONTROLS
+                FIELD NAVIGATION
               </h2>
-              
+
               <div className="space-y-4">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsActive(!isActive)}
                   className={`w-full py-3 px-6 rounded-lg font-display font-semibold flex items-center justify-center space-x-2 transition-all ${
-                    isActive 
-                      ? 'bg-red-500 hover:bg-red-600 text-white' 
+                    isActive
+                      ? 'bg-red-500 hover:bg-red-600 text-white'
                       : 'bg-green-500 hover:bg-green-600 text-white'
                   }`}
                 >
@@ -136,39 +138,39 @@ const ROVDashboard = () => {
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-pink-500/20 hover:bg-pink-500/30 rounded-lg text-pink-400 transition-colors"
+                    className="p-3 bg-green-500/20 hover:bg-green-500/30 rounded-lg text-green-400 transition-colors"
                   >
                     <ArrowUp className="w-6 h-6 mx-auto" />
                   </motion.button>
                   <div></div>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-pink-500/20 hover:bg-pink-500/30 rounded-lg text-pink-400 transition-colors"
+                    className="p-3 bg-green-500/20 hover:bg-green-500/30 rounded-lg text-green-400 transition-colors"
                   >
                     <ArrowLeft className="w-6 h-6 mx-auto" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-red-400 transition-colors"
+                    className="p-3 bg-emerald-500/20 hover:bg-emerald-500/30 rounded-lg text-emerald-400 transition-colors"
                   >
                     <RotateCcw className="w-6 h-6 mx-auto" />
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-pink-500/20 hover:bg-pink-500/30 rounded-lg text-pink-400 transition-colors"
+                    className="p-3 bg-green-500/20 hover:bg-green-500/30 rounded-lg text-green-400 transition-colors"
                   >
                     <ArrowRight className="w-6 h-6 mx-auto" />
                   </motion.button>
-                  
+
                   <div></div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-pink-500/20 hover:bg-pink-500/30 rounded-lg text-pink-400 transition-colors"
+                    className="p-3 bg-green-500/20 hover:bg-green-500/30 rounded-lg text-green-400 transition-colors"
                   >
                     <ArrowDown className="w-6 h-6 mx-auto" />
                   </motion.button>
@@ -177,47 +179,47 @@ const ROVDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Manipulator Controls */}
+            {/* Crop Condition Panel */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-6 flex items-center">
-                <Wrench className="w-5 h-5 mr-2" />
-                MANIPULATOR ARM
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-6 flex items-center">
+                <FlaskConical className="w-5 h-5 mr-2" />
+                CROP CONDITIONS
               </h2>
-              
+
               <div className="space-y-4">
-                {manipulatorControls.map((control, index) => (
-                  <div key={control.name} className="space-y-2">
+                {cropConditions.map((condition) => (
+                  <div key={condition.name} className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="font-display text-gray-300">{control.name}</span>
-                      <span className="font-cyber text-white">{control.value.toFixed(0)}%</span>
+                      <span className="font-display text-gray-300">{condition.name}</span>
+                      <span className="font-cyber text-white">{condition.status}</span>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: `${control.value}%` }}
-                        className={`h-2 rounded-full ${control.color}`}
+                        animate={{ width: `${condition.value}%` }}
+                        className={`h-2 rounded-full ${condition.color}`}
                       />
                     </div>
                   </div>
                 ))}
-                
+
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setGripperOpen(!gripperOpen)}
+                  onClick={() => setSpraying(!spraying)}
                   className={`w-full py-2 px-4 rounded-lg font-display font-medium flex items-center justify-center space-x-2 transition-all ${
-                    gripperOpen 
-                      ? 'bg-red-500/20 text-red-400 border border-red-500/50' 
+                    spraying
+                      ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
                       : 'bg-green-500/20 text-green-400 border border-green-500/50'
                   }`}
                 >
-                  <Grip className="w-4 h-4" />
-                  <span>{gripperOpen ? 'CLOSE GRIPPER' : 'OPEN GRIPPER'}</span>
+                  <Droplets className="w-4 h-4" />
+                  <span>{spraying ? 'STOP IRRIGATION' : 'START IRRIGATION'}</span>
                 </motion.button>
               </div>
             </motion.div>
@@ -227,9 +229,9 @@ const ROVDashboard = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-6">
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-6">
                 OPERATION MODES
               </h2>
               <div className="space-y-2">
@@ -241,7 +243,7 @@ const ROVDashboard = () => {
                     onClick={() => setCurrentMode(mode)}
                     className={`w-full p-3 rounded-lg text-left font-display transition-all ${
                       currentMode === mode
-                        ? 'bg-pink-500/20 text-pink-400 border border-pink-500/50'
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
                         : 'bg-gray-700/20 text-gray-300 hover:bg-gray-700/30'
                     }`}
                   >
@@ -259,23 +261,23 @@ const ROVDashboard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-cyber font-bold text-pink-400 flex items-center">
+                <h2 className="text-xl font-cyber font-bold text-green-400 flex items-center">
                   <Camera className="w-5 h-5 mr-2" />
-                  CAMERA FEED
+                  FIELD CAMERA
                 </h2>
                 <div className="flex space-x-2">
-                  {['normal', 'infrared', 'lowlight'].map((mode) => (
+                  {['rgb', 'thermal', 'ndvi'].map((mode) => (
                     <motion.button
                       key={mode}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => setCameraMode(mode)}
-                      className={`px-3 py-1 rounded-md text-sm font-display capitalize transition-colors ${
+                      className={`px-3 py-1 rounded-md text-sm font-display uppercase transition-colors ${
                         cameraMode === mode
-                          ? 'bg-pink-500 text-white'
+                          ? 'bg-green-500 text-white'
                           : 'bg-gray-700/50 text-gray-300 hover:bg-gray-700'
                       }`}
                     >
@@ -284,96 +286,97 @@ const ROVDashboard = () => {
                   ))}
                 </div>
               </div>
-              
+
               <div className="aspect-video bg-black/50 rounded-lg relative overflow-hidden">
-                {/* Background Image based on camera mode */}
                 <div className="absolute inset-0">
-                  {cameraMode === 'normal' && (
-                    <img 
-                      src="/images/img-8.jpeg" 
-                      alt="ROV Camera Feed" 
-                      className="w-full h-full object-cover opacity-70"
+                  {cameraMode === 'rgb' && (
+                    <img
+                      src="/images/img-8.jpeg"
+                      alt="RGB Field Camera"
+                      className="w-full h-full object-cover opacity-75"
                     />
                   )}
-                  {cameraMode === 'infrared' && (
-                    <img 
-                      src="/images/img-5.jpeg" 
-                      alt="Infrared Camera Feed" 
+                  {cameraMode === 'thermal' && (
+                    <img
+                      src="/images/img-5.jpeg"
+                      alt="Thermal Field Camera"
                       className="w-full h-full object-cover opacity-60 filter hue-rotate-180 contrast-125"
                     />
                   )}
-                  {cameraMode === 'lowlight' && (
-                    <img 
-                      src="/images/img-4.jpeg" 
-                      alt="Low Light Feed" 
-                      className="w-full h-full object-cover opacity-50 filter brightness-75 contrast-150"
+                  {cameraMode === 'ndvi' && (
+                    <img
+                      src="/images/img-4.jpeg"
+                      alt="NDVI Crop Health"
+                      className="w-full h-full object-cover opacity-65 filter hue-rotate-90 saturate-150"
                     />
                   )}
                 </div>
-                
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-red-500/20">
-                  <div className="absolute inset-4 border border-pink-500/30 rounded">
-                    <div className="absolute top-2 left-2 text-pink-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
+
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10">
+                  <div className="absolute inset-4 border border-green-500/30 rounded">
+                    <div className="absolute top-2 left-2 text-green-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
                       {cameraMode.toUpperCase()} MODE
                     </div>
-                    <div className="absolute top-2 right-2 text-pink-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
+                    <div className="absolute top-2 right-2 text-green-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
                       REC ●
                     </div>
-                    <div className="absolute bottom-2 left-2 text-pink-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
-                      ZOOM: 2.5x
+                    <div className="absolute bottom-2 left-2 text-green-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
+                      COVERAGE: {fieldCoverage.toFixed(1)}%
                     </div>
-                    <div className="absolute bottom-2 right-2 text-pink-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
+                    <div className="absolute bottom-2 right-2 text-green-400 text-xs font-mono bg-black/50 px-2 py-1 rounded">
                       {new Date().toLocaleTimeString()}
                     </div>
                   </div>
                 </div>
-                
-                {/* Crosshair */}
+
+                {/* Scan lines overlay for NDVI effect */}
+                {cameraMode === 'ndvi' && (
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/5 to-transparent"></div>
+                  </div>
+                )}
+
+                {/* Targeting reticle */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="relative">
-                    <Target className="w-16 h-16 text-pink-400/50" />
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.3, 0.8, 0.3]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: 'easeInOut'
-                      }}
-                      className="absolute inset-0"
-                    >
-                      <div className="w-4 h-0.5 bg-pink-400/70 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                      <div className="w-0.5 h-4 bg-pink-400/70 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    </motion.div>
+                    <Target className="w-16 h-16 text-green-400/40" />
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Terrain Map */}
+            {/* Field Map */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-4 flex items-center">
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-4 flex items-center">
                 <MapPin className="w-5 h-5 mr-2" />
-                TERRAIN MAPPING
+                FIELD MAPPING
               </h2>
               <div className="aspect-video bg-gray-900/50 rounded-lg relative overflow-hidden">
-                <div className="absolute inset-0 cyber-grid opacity-20"></div>
-                
-                {/* Terrain features */}
+                {/* Field grid */}
+                <div className="absolute inset-0 cyber-grid opacity-15"></div>
+
+                {/* Field zones */}
                 <div className="absolute inset-0">
-                  <div className="absolute top-1/4 left-1/4 w-8 h-6 bg-gray-600/50 rounded transform rotate-12"></div>
-                  <div className="absolute top-1/2 right-1/3 w-6 h-8 bg-gray-700/50 rounded transform -rotate-12"></div>
-                  <div className="absolute bottom-1/3 left-1/3 w-10 h-4 bg-gray-500/50 rounded"></div>
+                  <div className="absolute top-4 left-4 w-20 h-14 border border-green-500/40 rounded bg-green-500/10 flex items-center justify-center">
+                    <span className="text-green-400 text-xs font-mono">ZONE A</span>
+                  </div>
+                  <div className="absolute top-4 right-4 w-20 h-14 border border-yellow-500/40 rounded bg-yellow-500/10 flex items-center justify-center">
+                    <span className="text-yellow-400 text-xs font-mono">ZONE B</span>
+                  </div>
+                  <div className="absolute bottom-10 left-4 w-20 h-14 border border-blue-500/40 rounded bg-blue-500/10 flex items-center justify-center">
+                    <span className="text-blue-400 text-xs font-mono">ZONE C</span>
+                  </div>
+                  <div className="absolute bottom-10 right-4 w-20 h-14 border border-emerald-500/40 rounded bg-emerald-500/10 flex items-center justify-center">
+                    <span className="text-emerald-400 text-xs font-mono">ZONE D</span>
+                  </div>
                 </div>
-                
-                {/* ROV position */}
+
+                {/* Robot position */}
                 <motion.div
                   animate={{
                     x: [120, 140, 120],
@@ -384,31 +387,35 @@ const ROVDashboard = () => {
                     repeat: Infinity,
                     ease: 'easeInOut'
                   }}
-                  className="absolute w-6 h-4 bg-pink-400 rounded"
-                  style={{ top: '50%', left: '35%' }}
+                  className="absolute w-5 h-5 bg-green-400 rounded-full border-2 border-white"
+                  style={{ top: '50%', left: '40%' }}
                 >
-                  <div className="w-full h-full bg-pink-400 rounded"></div>
+                  <motion.div
+                    animate={{ scale: [1, 2, 1], opacity: [0.8, 0, 0.8] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-0 bg-green-400 rounded-full"
+                  />
                 </motion.div>
-                
+
                 {/* Path trail */}
                 <svg className="absolute inset-0 w-full h-full">
                   <motion.path
-                    d="M 100 150 Q 150 100 200 120 T 300 140"
-                    stroke="#ec4899"
+                    d="M 80 120 Q 120 90 160 110 T 240 130"
+                    stroke="#22c55e"
                     strokeWidth="2"
                     fill="none"
-                    strokeDasharray="5,5"
+                    strokeDasharray="6,4"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
-                    transition={{ duration: 3, repeat: Infinity }}
+                    transition={{ duration: 4, repeat: Infinity }}
                   />
                 </svg>
-                
-                <div className="absolute bottom-4 left-4 text-pink-400 text-sm font-mono">
-                  GPS: 40.7589° N, 73.9851° W
+
+                <div className="absolute bottom-4 left-4 text-green-400 text-sm font-mono">
+                  FIELD: Sector 3 — 2.4 Ha
                 </div>
-                <div className="absolute bottom-4 right-4 text-pink-400 text-sm font-mono">
-                  ELEVATION: 125m
+                <div className="absolute bottom-4 right-4 text-green-400 text-sm font-mono">
+                  COVERED: {fieldCoverage.toFixed(1)}%
                 </div>
               </div>
             </motion.div>
@@ -421,13 +428,13 @@ const ROVDashboard = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-6 flex items-center">
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-6 flex items-center">
                 <Gauge className="w-5 h-5 mr-2" />
                 SYSTEM STATUS
               </h2>
-              
+
               <div className="space-y-4">
                 {/* Battery */}
                 <div className="flex items-center justify-between">
@@ -450,35 +457,55 @@ const ROVDashboard = () => {
                 {/* Communication */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Wifi className="w-5 h-5 text-pink-400" />
-                    <span className="font-display text-gray-300">Radio Link</span>
+                    <Wifi className="w-5 h-5 text-green-400" />
+                    <span className="font-display text-gray-300">Field Link</span>
                   </div>
-                  <span className="font-cyber text-pink-400">Excellent</span>
+                  <span className="font-cyber text-green-400">Excellent</span>
                 </div>
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <div
                       key={i}
                       className={`h-2 w-4 rounded ${
-                        i < 5 ? 'bg-pink-400' : 'bg-gray-700'
+                        i < 5 ? 'bg-green-400' : 'bg-gray-700'
                       }`}
                     />
                   ))}
                 </div>
+
+                {/* Sprayer Status */}
+                <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center space-x-2">
+                    <Droplets className="w-5 h-5 text-blue-400" />
+                    <span className="font-display text-gray-300">Irrigation</span>
+                  </div>
+                  <span className={`font-cyber ${spraying ? 'text-blue-400' : 'text-gray-500'}`}>
+                    {spraying ? 'ACTIVE' : 'OFF'}
+                  </span>
+                </div>
+
+                {/* Sun/Light */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Sun className="w-5 h-5 text-yellow-400" />
+                    <span className="font-display text-gray-300">Light Level</span>
+                  </div>
+                  <span className="font-cyber text-yellow-400">87%</span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Performance Data */}
+            {/* Environmental Data */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-6">
-                PERFORMANCE DATA
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-6">
+                FIELD SENSORS
               </h2>
-              
+
               <div className="space-y-4">
                 {telemetryData.map((item, index) => (
                   <motion.div
@@ -505,35 +532,35 @@ const ROVDashboard = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass-card rounded-xl p-6 border border-pink-500/30 energy-pulse"
+              className="glass-card rounded-xl p-6 border border-green-500/30 energy-pulse"
             >
-              <h2 className="text-xl font-cyber font-bold text-pink-400 mb-4">
-                MISSION CONTROL
+              <h2 className="text-xl font-cyber font-bold text-green-400 mb-4">
+                FIELD MISSION
               </h2>
-              
+
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="font-display text-gray-300">Operation Time</span>
                   <span className="font-cyber text-white">
-                    {isActive ? '28:47' : '00:00'}
+                    {isActive ? '02:14:37' : '00:00:00'}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-display text-gray-300">Distance</span>
-                  <span className="font-cyber text-white">3.7 km</span>
+                  <span className="font-display text-gray-300">Area Covered</span>
+                  <span className="font-cyber text-white">{(fieldCoverage * 0.024).toFixed(2)} Ha</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-display text-gray-300">Tasks</span>
-                  <span className="font-cyber text-white">7/10</span>
+                  <span className="font-display text-gray-300">Samples Taken</span>
+                  <span className="font-cyber text-white">18 / 40</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-display text-gray-300">Mode</span>
-                  <span className="font-cyber text-pink-400">{currentMode}</span>
+                  <span className="font-cyber text-green-400">{currentMode}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-display text-gray-300">Arm Status</span>
-                  <span className={`font-cyber ${gripperOpen ? 'text-red-400' : 'text-green-400'}`}>
-                    {gripperOpen ? 'Gripping' : 'Ready'}
+                  <span className="font-display text-gray-300">Irrigation</span>
+                  <span className={`font-cyber ${spraying ? 'text-blue-400' : 'text-gray-500'}`}>
+                    {spraying ? 'Running' : 'Idle'}
                   </span>
                 </div>
               </div>
@@ -541,7 +568,7 @@ const ROVDashboard = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full mt-4 py-2 px-4 bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 rounded-lg font-display font-medium flex items-center justify-center space-x-2 transition-all"
+                className="w-full mt-4 py-2 px-4 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg font-display font-medium flex items-center justify-center space-x-2 transition-all"
               >
                 <Settings className="w-4 h-4" />
                 <span>SYSTEM SETTINGS</span>

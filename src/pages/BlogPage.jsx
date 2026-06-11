@@ -53,7 +53,7 @@ const BlogPage = () => {
         "**The Assembly Process**",
         "Each robot begins as individual components carefully selected for their specific roles. Watch our team meticulously assembling Diganta Prohori's hexacopter frame, integrating the Pixhawk 6C controller, and calibrating each sensor. Every connection matters, every calibration is crucial.",
         "**Testing and Validation**",
-        "Before any robot sees real-world deployment, it undergoes rigorous testing in controlled environments. Our testing videos showcase HydroJan 0.4's underwater navigation capabilities, Dingi's rescue operations, and Diganta Prohori's aerial surveillance missions.",
+        "Before any robot sees real-world deployment, it undergoes rigorous testing in controlled environments. Our testing videos showcase JolJan 1.0's underwater navigation capabilities, Farming Control's field operations, and Diganta Prohori's aerial surveillance missions.",
         "**Team Collaboration**",
         "What makes these sessions special isn't just the technology - it's the people. Our lab videos capture the collaborative spirit that drives innovation. From brainstorming solutions to celebrating breakthroughs, every moment reflects our commitment to making a difference.",
         "**Real Impact**",
@@ -81,7 +81,7 @@ const BlogPage = () => {
     },
     {
       id: 2,
-      title: "HydroJan 0.4: Into the Depths of Possibility",
+      title: "JolJan 1.0: Into the Depths of Possibility",
       subtitle: "Our Biggest Leap in Underwater Robotics",
       date: "12 August 2025",
       readTime: "5 min read",
@@ -89,16 +89,16 @@ const BlogPage = () => {
       icon: Waves,
       gradient: "from-purple-400 to-indigo-600",
       content: [
-        "At Team Phantom Forge, every prototype is a leap toward the future of underwater robotics. HydroJan 0.4 marked our biggest leap yet, a fully functioning Autonomous Underwater Vehicle (AUV) designed and built to meet the demanding standards of international competitions like 7th World Invention Competition and Exhibition.",
+        "At Team Dreamers Innovator, every prototype is a leap toward the future of underwater robotics. JolJan 1.0 marked our biggest leap yet, a fully functioning Autonomous Underwater Vehicle (AUV) designed and built to meet the demanding standards of international competitions like 7th World Invention Competition and Exhibition.",
         "This version was not just a test platform. It was the result of months of planning, design, and late-night problem solving. From hardware and control systems to software integration and documentation, we built a clear roadmap where every subsystem had a goal and every team member had a mission. Our aim was simple: create an AUV that could navigate complex underwater tasks while promoting innovation with a purpose.",
         "**Design Breakthroughs**",
-        "Previous builds taught us valuable lessons. The previous prototypes showed us what worked and what didn't. For HydroJan 0.4, we introduced a capsule-shaped hull that balances internal space with smooth hydrodynamics, giving the vehicle greater stability during deep-water navigation.",
+        "Previous builds taught us valuable lessons. The previous prototypes showed us what worked and what didn't. For JolJan 1.0, we introduced a capsule-shaped hull that balances internal space with smooth hydrodynamics, giving the vehicle greater stability during deep-water navigation.",
         "We paired this new design with high-performance thrusters sourced from Rovmaker, known for precision and reliability. This upgrade delivered sharper turns, stronger propulsion, and exceptional depth control, critical for competitive tasks. Inside, a mild steel frame provides strength under pressure, while a lightweight aluminum shell offers corrosion resistance without adding unnecessary weight.",
         "**Next Steps**",
-        "With the body, movement, and endurance now proven, our next focus is integrating a torpedo system to expand mission capabilities, pushing HydroJan closer to a fully competition-ready platform for World Invention Competition and Exhibition and beyond.",
+        "With the body, movement, and endurance now proven, our next focus is integrating a torpedo system to expand mission capabilities, pushing JolJan 1.0 closer to a fully competition-ready platform for World Invention Competition and Exhibition and beyond.",
         "**Powered by Teamwork**",
-        "Behind HydroJan 0.4 is a diverse team of engineers, programmers, and designers working side by side. Every improvement reflects not just technical skill but a shared commitment to innovation and real-world impact.",
-        "HydroJan 0.4 is more than a machine; it's a milestone. Each version brings us closer to mastering underwater robotics and to inspiring solutions that serve humanity.",
+        "Behind JolJan 1.0 is a diverse team of engineers, programmers, and designers working side by side. Every improvement reflects not just technical skill but a shared commitment to innovation and real-world impact.",
+        "JolJan 1.0 is more than a machine; it's a milestone. Each version brings us closer to mastering underwater robotics and to inspiring solutions that serve humanity.",
         "To explore the depths of possibility—one breakthrough at a time."
       ]
     }
@@ -302,7 +302,7 @@ const BlogPage = () => {
                 { date: "March 2025", event: "Design Phase", description: "Detailed design of three-robot system architecture" },
                 { date: "May 16, 2025", event: "First Drone Crash", description: "Initial prototype failure - learning from setbacks" },
                 { date: "May 27, 2025", event: "Successful Flight", description: "Diganta Prohori completes first successful mission" },
-                { date: "August 12, 2025", event: "HydroJan 0.4 Launch", description: "Advanced AUV prototype with breakthrough design" },
+                { date: "August 12, 2025", event: "JolJan 1.0 Launch", description: "Advanced AUV prototype with breakthrough design" },
                 { date: "Present", event: "Competition Ready", description: "Preparing for 7th World Invention Competition and Exhibition" }
               ].map((milestone, index) => (
                 <motion.div
@@ -356,7 +356,7 @@ const BlogPage = () => {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-cyber font-bold text-cyber-purple mb-2">Coming Soon</div>
-                <div className="text-gray-400 font-display">Dingi Development</div>
+                <div className="text-gray-400 font-display">Farming Control Development</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-cyber font-bold text-cyber-pink mb-2">Future</div>

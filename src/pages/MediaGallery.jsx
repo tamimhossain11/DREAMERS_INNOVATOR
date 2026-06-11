@@ -45,8 +45,8 @@ const MediaGallery = () => {
       type: 'video',
       src: '/images/vid-2.mp4',
       thumbnail: '/images/img-2.jpeg',
-      title: 'AUV Development Session',
-      description: 'HydroJan 0.4 underwater vehicle development and testing preparations',
+      title: 'JolJan 1.0 Development Session',
+      description: 'JolJan 1.0 underwater vehicle development and testing preparations',
       category: 'lab-session',
       date: '2024-01-18',
       location: 'Marine Systems Lab',
@@ -57,8 +57,8 @@ const MediaGallery = () => {
       type: 'video',
       src: '/images/vid-3.mp4',
       thumbnail: '/images/img-3.jpeg',
-      title: 'ROV Calibration Workshop',
-      description: 'Dingi rescue robot calibration and control system testing',
+      title: 'Farming Control Calibration Workshop',
+      description: 'Farming Control agricultural robot calibration and field system testing',
       category: 'lab-session',
       date: '2024-01-20',
       location: 'Control Systems Lab',
@@ -83,8 +83,8 @@ const MediaGallery = () => {
       type: 'video',
       src: '/images/vid-5.mp4',
       thumbnail: '/images/img-5.jpeg',
-      title: 'Water Tank AUV Test',
-      description: 'HydroJan 0.4 underwater navigation and hazard detection testing',
+      title: 'Water Tank JolJan 1.0 Test',
+      description: 'JolJan 1.0 underwater navigation and hazard detection testing',
       category: 'test-videos',
       date: '2024-01-28',
       location: 'Water Testing Facility',
@@ -96,8 +96,8 @@ const MediaGallery = () => {
       id: 'img-1',
       type: 'image',
       src: '/images/img-1.jpeg',
-      title: 'Team Phantom Forge',
-      description: 'The complete team behind the Smart Flood Management System',
+      title: 'Team Dreamers Innovator',
+      description: 'The complete team from ATBKHS behind the Dreamers Innovator project',
       category: 'team',
       date: '2024-01-10',
       location: 'Dreams of Bangladesh HQ',
@@ -107,7 +107,7 @@ const MediaGallery = () => {
       id: 'img-6',
       type: 'image',
       src: '/images/img-6.jpeg',
-      title: 'Diganta Prohori - Surveillance Drone',
+      title: 'Diganta Prohori - Multipurpose Drone',
       description: 'Complete assembled drone with hexacopter frame and Pixhawk controller',
       category: 'robots',
       date: '2024-01-22',
@@ -118,7 +118,7 @@ const MediaGallery = () => {
       id: 'img-7',
       type: 'image',
       src: '/images/img-7.jpeg',
-      title: 'HydroJan 0.4 - AUV System',
+      title: 'JolJan 1.0 - AUV System',
       description: 'Autonomous underwater vehicle with capsule hull design',
       category: 'robots',
       date: '2024-01-24',
@@ -129,8 +129,8 @@ const MediaGallery = () => {
       id: 'img-8',
       type: 'image',
       src: '/images/img-8.jpeg',
-      title: 'Dingi - Rescue Robot',
-      description: 'Water-floating rescue robot with manipulator arm',
+      title: 'Farming Control - Agricultural Robot',
+      description: 'Smart agricultural control robot with field monitoring and irrigation system',
       category: 'robots',
       date: '2024-01-26',
       location: 'Rescue Systems Lab',
@@ -261,7 +261,7 @@ const MediaGallery = () => {
             <span className="text-white">GALLERY</span>
           </h1>
           <p className="text-xl text-gray-300 font-display max-w-4xl mx-auto leading-relaxed">
-            Explore our journey in developing the Smart Flood Management System through lab sessions, testing phases, and project milestones.
+            Explore our journey as Team Dreamers Innovator — developing multipurpose drones, underwater vehicles, and smart farming systems through lab sessions and project milestones.
           </p>
         </motion.div>
 

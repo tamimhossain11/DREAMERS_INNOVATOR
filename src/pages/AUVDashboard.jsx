@@ -84,7 +84,7 @@ const AUVDashboard = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-cyber font-bold text-white glow-text">
-                  HYDROJAN 0.4
+                  JOLJAN 1.0
                 </h1>
                 <p className="text-gray-400 font-display">Autonomous Underwater Vehicle Control Center</p>
               </div>
